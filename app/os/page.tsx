@@ -4,7 +4,7 @@ import { db } from "@/lib/db";
 import { modules } from "@/lib/db/schema";
 
 export default async function OSPage() {
-  const allModules = await db.select().from(modules).orderBy(modules.order);
+  const allModules = await db.select().from(modules).orderBy(modules.order).catch(() => []);
 
   return (
     <div className="p-8 max-w-4xl mx-auto">

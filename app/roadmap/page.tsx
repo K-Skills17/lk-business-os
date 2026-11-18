@@ -5,8 +5,8 @@ import { phases, tasks } from "@/lib/db/schema";
 import Link from "next/link";
 
 export default async function RoadmapPage() {
-  const allPhases = await db.select().from(phases).orderBy(phases.order);
-  const allTasks = await db.select().from(tasks);
+  const allPhases = await db.select().from(phases).orderBy(phases.order).catch(() => []);
+  const allTasks = await db.select().from(tasks).catch(() => []);
 
   const phaseData = allPhases.map((phase) => {
     const pt = allTasks.filter((t) => t.phaseId === phase.id);

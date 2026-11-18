@@ -4,7 +4,7 @@ import { db } from "@/lib/db";
 import { packages } from "@/lib/db/schema";
 
 export default async function PackagesPage() {
-  const allPackages = await db.select().from(packages).orderBy(packages.order);
+  const allPackages = await db.select().from(packages).orderBy(packages.order).catch(() => []);
 
   return (
     <div className="p-8 max-w-5xl mx-auto">
