@@ -19,7 +19,7 @@ export default function SetupPage() {
   }
 
   return (
-    <div className="p-8 max-w-2xl mx-auto">
+    <div className="p-4 md:p-8 max-w-2xl mx-auto">
       <div className="mb-8">
         <div className="text-xs font-medium mb-1 uppercase tracking-widest" style={{ color: "var(--primary)" }}>Configuration</div>
         <h1 className="text-2xl font-semibold">Setup</h1>

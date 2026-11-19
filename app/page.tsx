@@ -50,7 +50,7 @@ export default async function DashboardPage() {
   const activePhase = phases.find((p) => p.done < p.total && p.total > 0);
 
   return (
-    <div className="p-8 max-w-6xl mx-auto">
+    <div className="p-4 md:p-8 max-w-6xl mx-auto">
       <div className="mb-8">
         <div className="text-xs font-medium mb-1 uppercase tracking-widest" style={{ color: "var(--primary)" }}>LK Digital</div>
         <h1 className="text-2xl font-semibold">Business OS</h1>
@@ -59,7 +59,7 @@ export default async function DashboardPage() {
         </p>
       </div>
 
-      <div className="grid grid-cols-4 gap-4 mb-8">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-6 md:mb-8">
         <StatCard label="Overall Progress" value={`${overallPct}%`} sub={`${completedTasks} / ${totalTasks} tasks`} accent />
         <StatCard label="Phases" value={`${phases.length}`} sub="Total phases" />
         <StatCard label="Active Phase" value={activePhase ? `Phase ${activePhase.order}` : "All done"} sub={activePhase ? activePhase.name.split("—")[1]?.trim() ?? "" : "Complete"} />
@@ -88,7 +88,7 @@ export default async function DashboardPage() {
 
       <div className="mb-8">
         <h2 className="text-xs font-semibold mb-4 uppercase tracking-wider" style={{ color: "var(--muted-foreground)" }}>Build Roadmap</h2>
-        <div className="grid grid-cols-3 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
           {phases.map((phase) => {
             const pct = phase.total > 0 ? Math.round((phase.done / phase.total) * 100) : 0;
             const status = pct === 100 ? "done" : pct > 0 ? "active" : "pending";
@@ -117,8 +117,8 @@ export default async function DashboardPage() {
 
       <div>
         <h2 className="text-xs font-semibold mb-4 uppercase tracking-wider" style={{ color: "var(--muted-foreground)" }}>MRR Targets</h2>
-        <div className="rounded-lg border overflow-hidden" style={{ borderColor: "var(--border)" }}>
-          <table className="w-full text-sm">
+        <div className="rounded-lg border overflow-x-auto" style={{ borderColor: "var(--border)" }}>
+          <table className="w-full text-sm min-w-[400px]">
             <thead>
               <tr style={{ background: "var(--muted)", borderBottom: "1px solid var(--border)" }}>
                 {["Clients", "Avg / Month", "MRR", "ARR"].map((h) => (

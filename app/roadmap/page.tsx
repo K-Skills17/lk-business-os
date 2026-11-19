@@ -14,7 +14,7 @@ export default async function RoadmapPage() {
   });
 
   return (
-    <div className="p-8 max-w-4xl mx-auto">
+    <div className="p-4 md:p-8 max-w-4xl mx-auto">
       <div className="mb-8">
         <div className="text-xs font-medium mb-1 uppercase tracking-widest" style={{ color: "var(--primary)" }}>Build Roadmap</div>
         <h1 className="text-2xl font-semibold">All Phases</h1>

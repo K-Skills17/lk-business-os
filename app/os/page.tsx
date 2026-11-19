@@ -7,7 +7,7 @@ export default async function OSPage() {
   const allModules = await db.select().from(modules).orderBy(modules.order).catch(() => []);
 
   return (
-    <div className="p-8 max-w-4xl mx-auto">
+    <div className="p-4 md:p-8 max-w-4xl mx-auto">
       <div className="mb-8">
         <div className="text-xs font-medium mb-1 uppercase tracking-widest" style={{ color: "var(--primary)" }}>Architecture</div>
         <h1 className="text-2xl font-semibold">LK Dentista OS</h1>
@@ -51,7 +51,7 @@ export default async function OSPage() {
                   <div className="text-xs mt-0.5" style={{ color: "var(--muted-foreground)" }}>{mod.purpose}</div>
                 </div>
               </div>
-              <div className="grid grid-cols-2 divide-x" style={{ borderColor: "var(--border)" }}>
+              <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x" style={{ borderColor: "var(--border)" }}>
                 <div className="p-4">
                   <div className="text-[10px] font-semibold uppercase tracking-wider mb-2.5" style={{ color: "var(--muted-foreground)" }}>
                     Components

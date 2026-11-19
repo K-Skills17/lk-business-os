@@ -33,7 +33,7 @@ export default async function PhasePage({ params }: { params: Promise<{ slug: st
   const nextPhase = currentIndex < allPhases.length - 1 ? allPhases[currentIndex + 1] : null;
 
   return (
-    <div className="p-8 max-w-3xl mx-auto">
+    <div className="p-4 md:p-8 max-w-3xl mx-auto">
       {/* Back */}
       <Link href="/roadmap" className="inline-flex items-center gap-1 text-xs mb-6 hover:opacity-80 transition-opacity" style={{ color: "var(--muted-foreground)" }}>
         ← All Phases

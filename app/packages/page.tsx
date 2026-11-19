@@ -7,7 +7,7 @@ export default async function PackagesPage() {
   const allPackages = await db.select().from(packages).orderBy(packages.order).catch(() => []);
 
   return (
-    <div className="p-8 max-w-5xl mx-auto">
+    <div className="p-4 md:p-8 max-w-5xl mx-auto">
       <div className="mb-8">
         <div className="text-xs font-medium mb-1 uppercase tracking-widest" style={{ color: "var(--primary)" }}>Commercial Model</div>
         <h1 className="text-2xl font-semibold">Service Packages</h1>
@@ -16,7 +16,7 @@ export default async function PackagesPage() {
         </p>
       </div>
 
-      <div className="grid grid-cols-3 gap-5 mb-10">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 mb-8 md:mb-10">
         {allPackages.map((pkg) => {
           const features = pkg.features as string[];
           return (
@@ -79,8 +79,8 @@ export default async function PackagesPage() {
       {/* Revenue scenarios */}
       <div>
         <h2 className="text-xs font-semibold mb-4 uppercase tracking-wider" style={{ color: "var(--muted-foreground)" }}>Revenue Scenarios</h2>
-        <div className="rounded-lg border overflow-hidden" style={{ borderColor: "var(--border)" }}>
-          <table className="w-full text-sm">
+        <div className="rounded-lg border overflow-x-auto" style={{ borderColor: "var(--border)" }}>
+          <table className="w-full text-sm min-w-[400px]">
             <thead>
               <tr style={{ background: "var(--muted)", borderBottom: "1px solid var(--border)" }}>
                 {["Clients", "Avg / Month", "MRR", "ARR"].map((h) => (

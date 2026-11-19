@@ -63,7 +63,7 @@ export function DocsClient({ initialDocs }: { initialDocs: Doc[] }) {
   }
 
   return (
-    <div className="p-8 max-w-6xl mx-auto">
+    <div className="p-4 md:p-8 max-w-6xl mx-auto">
       <div className="mb-6 flex items-start justify-between">
         <div>
           <div className="text-xs font-medium mb-1 uppercase tracking-widest" style={{ color: "var(--primary)" }}>Knowledge Base</div>
@@ -81,31 +81,31 @@ export function DocsClient({ initialDocs }: { initialDocs: Doc[] }) {
         </button>
       </div>
 
-      <div className="flex gap-6">
-        {/* Sidebar */}
-        <div className="w-48 shrink-0">
-          <div className="mb-2">
+      <div className="flex flex-col md:flex-row gap-4 md:gap-6">
+        {/* Sidebar — horizontal scroll on mobile, vertical on desktop */}
+        <div className="md:w-48 md:shrink-0">
+          <div className="flex md:flex-col gap-1 overflow-x-auto pb-1 md:pb-0 md:overflow-visible">
             <button
               onClick={() => setActiveSection(null)}
-              className="w-full text-left px-3 py-2 rounded text-xs transition-all"
+              className="shrink-0 md:w-full text-left px-3 py-1.5 md:py-2 rounded text-xs transition-all whitespace-nowrap"
               style={{ background: !activeSection ? "var(--accent)" : "transparent", color: !activeSection ? "var(--primary)" : "var(--muted-foreground)" }}
             >
               All ({docs.length})
             </button>
+            {sections.map((s) => {
+              const count = docs.filter((d) => d.section === s).length;
+              return (
+                <button
+                  key={s}
+                  onClick={() => setActiveSection(s)}
+                  className="shrink-0 md:w-full text-left px-3 py-1.5 md:py-2 rounded text-xs transition-all whitespace-nowrap"
+                  style={{ background: activeSection === s ? "var(--accent)" : "transparent", color: activeSection === s ? "var(--primary)" : "var(--muted-foreground)" }}
+                >
+                  {s} ({count})
+                </button>
+              );
+            })}
           </div>
-          {sections.map((s) => {
-            const count = docs.filter((d) => d.section === s).length;
-            return (
-              <button
-                key={s}
-                onClick={() => setActiveSection(s)}
-                className="w-full text-left px-3 py-2 rounded text-xs transition-all"
-                style={{ background: activeSection === s ? "var(--accent)" : "transparent", color: activeSection === s ? "var(--primary)" : "var(--muted-foreground)" }}
-              >
-                {s} ({count})
-              </button>
-            );
-          })}
         </div>
 
         {/* Doc list + content */}
